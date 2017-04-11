@@ -1,0 +1,98 @@
+<div ng-controller="MainController">
+    <md-toolbar style="background-color: #26A69A;">
+        <div class="md-toolbar-tools">
+            <md-button class="md-icon-button" aria-label="Back" ng-click="toggleLeft()">
+                <md-icon md-svg-icon="img/icons/menu.svg" style="color: #FFFFFF"></md-icon>
+            </md-button>
+            <h2>
+                <span style="color: #FFFFFF;">Farma Fácil</span>
+            </h2>
+        </div>
+    </md-toolbar>
+
+    <div layout="column" style="height: 517px;" ng-cloak>
+        <section layout="row" flex>
+            <md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left"
+                md-is-locked-open="$mdMedia('gt-md')">
+                <md-toolbar style="background-color: #26A69A;" class="md-tall md-hue-3">
+                    <span flex></span>
+                    <img style="margin-left: 22px;" width="50px" height="50px" src="img/icon.png" alt="">
+                    <h2 style="padding-left: 22px;" class="md-toolbar-tools md-toolbar-tools-bottom">
+                        <span style="color: #FFFFFF;" class="md-flex">Filipe Falcão</span>
+                    </h2>
+                </md-toolbar>
+
+                <md-content style="padding-left: 0px; padding-right: 0px;" layout-padding>
+                    <md-button style="text-align: left; width: 100%; margin: 0px; padding-left: 0px; padding-right: 0px;">
+                        <span style="color: #555555; margin-left: 22px;">INÍCIO</span>
+                    </md-button>
+                    <md-button
+                            style="text-align: left; width: 100%; margin: 0px; padding-left: 0px; padding-right: 0px;">
+                        <span style="color: #555555; margin-left: 22px;">PEDIDOS</span>
+                    </md-button>
+                    <md-button
+                            style="text-align: left; width: 100%; margin: 0px; padding-left: 0px; padding-right: 0px;">
+                        <span style="color: #555555; margin-left: 22px;">AVALIAÇÕES</span>
+                    </md-button>
+                    <br><br><br><br>
+                    <md-button
+                            style="text-align: left; width: 100%; margin: 0px; padding-left: 0px; padding-right: 0px;">
+                        <span style="color: #999999; margin-left: 22px;">CONFIGURAÇÕES</span>
+                    </md-button>
+                    <md-button
+                            style="text-align: left; width: 100%; margin: 0px; padding-left: 0px; padding-right: 0px;">
+                        <span style="color: #999999; margin-left: 22px;">AJUDA</span>
+                    </md-button>
+                    <md-button
+                            style="text-align: left; width: 100%; margin: 0px; padding-left: 0px; padding-right: 0px;">
+                        <span style="color: #999999; margin-left: 22px;">TERMOS E CONDIÇÕES</span>
+                    </md-button>
+                </md-content>
+            </md-sidenav>
+
+            <md-content style="margin-top: 0px; padding: 0px;" flex layout-padding>
+                <div style="padding: 0px;">
+
+                    <h4 style="padding-right: 16px; padding-left: 16px; margin-bottom: 0px; color: #555555;">
+                        Promoções</h4>
+
+                    <md-content>
+                        <md-list>
+                            <md-list-item class="md-3-line" ng-repeat="item in discounts">
+                                <div class="md-list-item-text">
+                                    <h3>{{ item.what }}</h3>
+                                    <h4>{{ item.name }}</h4>
+                                    <p>{{ item.location }}</p>
+                                </div>
+                                <md-button class="md-secondary">Ver</md-button>
+                                <md-divider ng-if="!$last"></md-divider>
+                            </md-list-item>
+                        </md-list>
+                    </md-content>
+
+                    <h4 style="padding-right: 16px; padding-left: 16px; margin-bottom: 0px; color: #555555;">Farmácias
+                        próximas</h4>
+
+                    <md-content>
+                        <md-list>
+                            <md-list-item class="md-3-line" ng-repeat="item in drugStores">
+                                <div class="md-list-item-text">
+                                    <a href="#/drugstore" ng-click="go(item)" style="text-decoration: none">
+                                        <h3>{{ item.name }}</h3>
+                                        <div class="reviews">
+                                            <img width="12px;" height="12px;" src="img/icons/star.svg" alt="">
+                                            <p>{{ item.reviews }}</p>
+                                        </div>
+                                        <p>{{ item.location }}</p>
+                                    </a>
+                                </div>
+                                <md-divider ng-if="!$last"></md-divider>
+                            </md-list-item>
+                        </md-list>
+                    </md-content>
+                </div>
+                <div flex></div>
+            </md-content>
+        </section>
+    </div>
+</div>

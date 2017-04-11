@@ -1,0 +1,12 @@
+.md-accent > md-tabs-wrapper {
+    background-color: #26A69A!important;
+}
+
+md-tabs.md-accent > md-tabs-wrapper > md-tabs-canvas > md-pagination-wrapper > md-tab-item:not([disabled]) {
+    color: rgba(255,255,255,0.87);
+}
+
+.reviews > img,
+.reviews > p {
+    display: inline-block;
+}

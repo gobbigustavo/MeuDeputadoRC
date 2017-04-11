@@ -1,0 +1,56 @@
+<div ng-controller="CreateUserController">
+    <md-toolbar style="background-color: #26A69A;">
+        <div class="md-toolbar-tools">
+            <md-button class="md-icon-button" aria-label="Back">
+                <a href="#/login">
+                    <md-icon md-svg-icon="img/icons/arrow-left.svg" style="color: #FFFFFF"></md-icon>
+                </a>
+            </md-button>
+            <h2>
+                <span style="color: #FFFFFF;">Cadastre-se</span>
+            </h2>
+        </div>
+    </md-toolbar>
+
+    <div style="margin-top: 0px; margin-right: 25px; margin-left: 25px;">
+        <form action="">
+            <md-input-container style="font-size: 15px; margin-bottom: 0!important; margin-top: 25px;" class="md-block"
+                                flex-gt-sm md-no-float>
+                <input ng-model="user.email" placeholder="Email" type="email">
+            </md-input-container>
+
+            <md-input-container style="font-size: 15px; margin: 0!important;" class="md-block" flex-gt-sm md-no-float>
+                <input ng-model="user.password" placeholder="Senha" type="password">
+            </md-input-container>
+
+            <md-input-container style="font-size: 15px; margin: 0!important;" class="md-block" flex-gt-sm md-no-float>
+                <input ng-model="user.passwordConfirmation" placeholder="Repetir Senha" type="password">
+            </md-input-container>
+
+            <md-button style="width: 100%; height: 50px; font-size: 15px; color: #FFFFFF; background-color: #26A69A; display: block; margin-left: auto; margin-right: auto; margin-bottom: 10px;" class="md-raised" ng-click="createUser()">
+                CADASTRAR
+            </md-button>
+        </form>
+
+        <div style="margin-top: 5px; margin-bottom: 28px;display: flex; align-items: center; justify-content: center;">
+            <span style="font-size: 15px;">
+                Já possui uma conta?
+                <a style="color: #26A69A" href="#/login" id="new_account">Entre aqui</a>
+            </span>
+        </div>
+
+        <md-button
+                style="width: 100%; height: 50px; font-size: 15px; color: #FFFFFF; background-color: #2D4486; display: block; margin-left: auto; margin-right: auto; margin-bottom: 10px;"
+                class="md-raised">
+            <md-icon md-svg-icon="img/icons/facebook.svg" style="color: #FFFFFF"></md-icon>
+            CADASTRAR COM FACEBOOK
+        </md-button>
+
+        <md-button
+                style="width: 100%; height: 50px; font-size: 15px; color: #FFFFFF; background-color: #D2352C; display: block; margin-left: auto; margin-right: auto;"
+                class="md-raised">
+            <md-icon md-svg-icon="img/icons/google-plus.svg" style="color: #FFFFFF"></md-icon>
+            CADASTRAR COM GOOGLE
+        </md-button>
+    </div>
+</div>
