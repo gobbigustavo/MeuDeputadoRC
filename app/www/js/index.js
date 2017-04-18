@@ -14,6 +14,8 @@ var app = {
 app.initialize();
 
 angular.module('App', ['ngMaterial', 'ngRoute', 'firebase'])
+
+angular.module('app', ['swipe']);
     
   // .run(["$rootScope", "$location", function($rootScope, $location) {
   //     $rootScope.$on("$routeChangeError", function(event, next, previous, error) {
