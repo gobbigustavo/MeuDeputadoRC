@@ -6,6 +6,19 @@ md-tabs.md-accent > md-tabs-wrapper > md-tabs-canvas > md-pagination-wrapper > m
     color: rgba(255,255,255,0.87);
 }
 
+.md-button.md-fab {
+    background: #0289AB!important;
+  min-width: 0;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+margin-top: 10%;
+    margin-bottom: 10%;
+    margin-left: 10%;
+}
+
+
+
 .reviews > img,
 .reviews > p {
     display: inline-block;

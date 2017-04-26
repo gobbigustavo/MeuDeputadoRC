@@ -1,0 +1,63 @@
+<div ng-controller="CreateUserController">
+    <md-toolbar style="background-color: #26A69A;">
+        <div class="md-toolbar-tools">
+            <md-button class="md-icon-button" aria-label="Back">
+                <a href="#/login">
+                    <md-icon md-svg-icon="img/icons/arrow-left.svg" style="color: #FFFFFF"></md-icon>
+                </a>
+            </md-button>
+            <h2>
+                <span style="color: #FFFFFF;">Projetos de Lei</span>
+            </h2>
+        </div>
+    </md-toolbar>
+
+    <div style="margin-top: 10px; margin-right: 5px; margin-left: 5px;">
+       <md-card style="background: #00A59B; color: #FFFFFF;">
+        <img ng-src="img/projetos/1.jpeg" class="md-card-image" alt="Washed Out">
+        <md-card-title>
+          <md-card-title-text>
+            <span class="md-headline">Produtos fabricados em panificações e confeitarias</span>
+          </md-card-title-text>
+        </md-card-title>
+        <md-card-content>
+          <p>
+            PL 371/2016 - Regulamenta no estado de Alagoas, no cumprimento da lei estadual nº 7.834, a venda de produtos fabricados em indústrias de panificação e confeitaria, e dá outras providências.
+          </p>
+        </md-card-content>
+        </md-card-content>
+        <md-card-actions layout="row" layout-align="center">
+          <md-button class="md-primary" ng-href="{{googleUrl}}">Baixar arquivo</md-button>
+        </md-card-actions>  
+         <p style="text-align: center;">Você é a favor desse projeto?</p>  
+        <md-card-actions layout="row" layout-align="center">  
+          <md-button class="md-raised md-primary">Sim</md-button>
+          <md-button class="md-raised md-warn">Não</md-button>
+        </md-card-actions>
+      </md-card>
+    
+    <md-card style="background: #00A59B; color: #FFFFFF;">
+        <img ng-src="img/projetos/2.jpeg" class="md-card-image" alt="Washed Out">
+        <md-card-title>
+          <md-card-title-text>
+            <span class="md-headline">Cartaz com lista dos medicamentos da Farmácia Popular</span>
+          </md-card-title-text>
+        </md-card-title>
+        <md-card-content>
+          <p>
+            PL 370/2016 - Dispõe sobre a necessidade da afixação de cartaz com lista dos remédios do programa.
+          </p>
+        </md-card-content>
+        </md-card-content>
+        <md-card-actions layout="row" layout-align="center">
+          <md-button class="md-primary" ng-href="{{googleUrl}}">Baixar arquivo</md-button>
+        </md-card-actions>  
+         <p style="text-align: center;">Você é a favor desse projeto?</p>  
+        <md-card-actions layout="row" layout-align="center">  
+          <md-button class="md-raised md-primary">Sim</md-button>
+          <md-button class="md-raised md-warn">Não</md-button>
+        </md-card-actions>
+      </md-card>
+
+    </div>
+</div>

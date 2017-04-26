@@ -240,6 +240,14 @@ angular.module('App', ['ngMaterial', 'ngRoute', 'firebase'])
         templateUrl: 'views/drugstore.html',
         controller: 'DrugstoreController'
       }).
+    when('/projetosdelei', {
+        templateUrl: 'views/projetosdelei.html',
+        controller: 'CreateUserController'
+      }).
+    when('/rodrigo', {
+        templateUrl: 'views/rodrigo.html',
+        controller: 'CreateUserController'
+      }).
 
       otherwise({
         redirectTo: '/login'
