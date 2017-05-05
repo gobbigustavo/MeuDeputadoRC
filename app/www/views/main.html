@@ -1,17 +1,23 @@
-<div ng-controller="MainController">
+<div ng-app="MyApp" ng-controller="MainController" class="tabsdemoDynamicHeight">
     <div style="width: 100%;">
   <md-toolbar style="background-color: #26A69A;" class="md-hue-2">
         <div class="md-toolbar-tools">
             <h2>
-                <span style="color: #FFFFFF;">Meu Deputado</span>
+                <span style="color: #FFFFFF;" text-align="center;">Seu Deputado</span>
             </h2>
         </div>
     </md-toolbar>
 </div>
 
-<div id="wrap">
-    
-    <md-card style="margin-top: 25px; margin-right: 25px; margin-left: 25px;">
+<md-content class="md-padding">
+    <md-tabs md-center-tabs="true" md-dynamic-height="" md-border-bottom="" md-swipe-content="true">
+      <md-tab label="one">
+          <md-tab-label>
+      <md-icon md-svg-icon="img/deputadoicon.svg"></md-icon>
+        </md-tab-label>
+          
+        <md-tab-body class="md-padding">
+          <md-card style="margin-top: 25px; margin-right: 5px; margin-left: 5px;">
         <img ng-src="img/rodrigobio.png" class="md-card-image" alt="Rodrigo">
         <md-card-title>
             <md-card-title-text>
@@ -29,5 +35,120 @@
             </a>
         </md-card-actions>
     </md-card>
+        </md-tab-body>
+      </md-tab>
+      
+    <md-tab label="two">
+        <md-tab-label>
+      <md-icon md-svg-icon="img/projetosdeleiicon.svg"></md-icon>
+        </md-tab-label>
+          
+        <md-tab-body class="md-padding">
+          <md-card style="margin-top: 25px; margin-right: 5px; margin-left: 5px;">
+        <img ng-src="img/projetosdelei.jpg" class="md-card-image" alt="Rodrigo">
+        <md-card-title>
+            <md-card-title-text>
+                <span class="md-headline">Projetos de lei</span>
+            </md-card-title-text>
+        </md-card-title>
+        <md-card-content>
+        Confira os projetos de lei apresentados pelo deputado.
+            </p>
+        </md-card-content>
+        <md-card-actions layout="row" layout-align="end center">
+
+            <a href="#/projetosdelei">
+            <md-button>Ler mais</md-button>
+            </a>   
+        </md-card-actions>
+    </md-card>
+        </md-tab-body>
+      </md-tab>
+      
+    <md-tab label="three">
+        <md-tab-label>
+      <md-icon md-svg-icon="img/boaspraticasicon.svg"></md-icon>
+        </md-tab-label>
+          
+        <md-tab-body class="md-padding">
+          <md-card style="margin-top: 25px; margin-right: 5px; margin-left: 5px;">
+        <img ng-src="img/boaspraticas.jpg" class="md-card-image" alt="Rodrigo">
+        <md-card-title>
+            <md-card-title-text>
+                <span class="md-headline">Boas práticas</span>
+            </md-card-title-text>
+        </md-card-title>
+        <md-card-content>
+        Conheça os projetos desenvolvidos pelo deputado ao longo do mandato.
+            </p>
+        </md-card-content>
+        <md-card-actions layout="row" layout-align="end center">
+
+            <a href="#/boaspraticas">
+            <md-button>Ler mais</md-button>
+            </a>   
+        </md-card-actions>
+    </md-card>
+        </md-tab-body>
+      </md-tab>
+
+<md-tab label="four">
+        <md-tab-label>
+      <md-icon md-svg-icon="img/icons/monitoraicon.svg"></md-icon>
+        </md-tab-label>
+          
+        <md-tab-body class="md-padding">
+          <md-card style="margin-top: 25px; margin-right: 5px; margin-left: 5px;">
+        <img ng-src="img/monitora.png" class="md-card-image" alt="Rodrigo">
+        <md-card-title>
+            <md-card-title-text>
+                <span class="md-headline">Monitora Alagoas</span>
+            </md-card-title-text>
+        </md-card-title>
+        <md-card-content>
+        Conheça o portal que está revolucionando o monitoramento governamental do estado.
+            </p>
+        </md-card-content>
+        <md-card-actions layout="row" layout-align="end center">
+
+            <a href="#/boaspraticas">
+            <md-button>Conferir</md-button>
+            </a>   
+        </md-card-actions>
+    </md-card>
+        </md-tab-body>
+      </md-tab>
+
+<md-tab label="five">
+        <md-tab-label>
+      <md-icon md-svg-icon="img/icons/falecom.svg"></md-icon>
+        </md-tab-label>
+          
+        <md-tab-body class="md-padding">
+          <md-card style="margin-top: 25px; margin-right: 5px; margin-left: 5px;">
+        <img ng-src="img/falecom.jpg" class="md-card-image" alt="Rodrigo">
+        <md-card-title>
+            <md-card-title-text>
+                <span class="md-headline">Fale com o Rodrigo</span>
+            </md-card-title-text>
+        </md-card-title>
+        <md-card-content>
+        Mande sua mensagem para o deputado!
+            </p>
+        </md-card-content>
+        <md-card-actions layout="row" layout-align="end center">
+
+            <a href="#/boaspraticas">
+            <md-button>Saiba mais</md-button>
+            </a>   
+        </md-card-actions>
+    </md-card>
+        </md-tab-body>
+      </md-tab>
+    </md-tabs>
+  </md-content>
+<div id="wrap">
+    
 </div>
 </div>
+
