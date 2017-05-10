@@ -1,4 +1,26 @@
-<div style="margin-top: 35px; margin-right: 25px; margin-left: 25px;" ng-controller="LoginController">
+<body>
+
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '300631640374242',
+      cookie     : true,
+      xfbml      : true,
+      version    : 'v2.8'
+    });
+    FB.AppEvents.logPageView();   
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+    
+    <div style="margin-top: 35px; margin-right: 25px; margin-left: 25px;" ng-controller="LoginController">
     <img height="100%" width="100%" style="display: block; margin-left: auto; margin-right: auto;" src="img/logo.png" alt="">
 
     <form action="">
@@ -26,3 +48,5 @@
         </md-button>
     </a>
 </div>
+
+</body>
