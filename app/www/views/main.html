@@ -3,7 +3,7 @@
   <md-toolbar style="background-color: #26A69A;" class="md-hue-2">
         <div class="md-toolbar-tools">
             <h2>
-                <span style="color: #FFFFFF;" text-align="center;">Seu Deputado</span>
+                <span flex style="color: #FFFFFF;" layout="row" layout-align="center center">SEU DEPUTADO</span>
             </h2>
         </div>
     </md-toolbar>
@@ -11,7 +11,55 @@
 <body style="overflow:hidden;">
 <md-content class="md-padding">
     <md-tabs md-center-tabs="true" md-dynamic-height="" md-border-bottom="" md-swipe-content="true">
-      <md-tab label="one">
+      <md-tab label="six">
+          <md-tab-label>
+      <md-icon md-svg-icon="img/icons/vote.svg"></md-icon>
+        </md-tab-label>
+          
+        <md-tab-body class="md-padding">
+            <md-card style="margin-top: 5%; margin-right: 15%; margin-left: 15%; margin-bottom: 40%;">
+        <img ng-src="img/ale.jpg" class="md-card-image" alt="Rodrigo">
+        <md-card-title>
+            <md-card-title-text>
+                <span class="md-headline">Votação na ALE</span>
+            </md-card-title-text>
+        </md-card-title>
+      
+        <md-card-actions layout="row" layout-align="end center">
+
+            <a href="#/votacaonaale">
+                <md-button>Vote</md-button>
+            </a>
+        </md-card-actions>
+    </md-card>
+        </md-tab-body>
+      </md-tab>
+        
+        <md-tab label="seven">
+          <md-tab-label>
+      <md-icon md-svg-icon="img/icons/cidade.svg"></md-icon>
+        </md-tab-label>
+          
+        <md-tab-body class="md-padding">
+            <md-card style="margin-top: 5%; margin-right: 15%; margin-left: 15%; margin-bottom: 40%;">
+        <img ng-src="img/cidade.jpg" class="md-card-image" alt="Rodrigo">
+        <md-card-title>
+            <md-card-title-text>
+                <span class="md-headline">Qual o problema da sua cidade?</span>
+            </md-card-title-text>
+        </md-card-title>
+      
+        <md-card-actions layout="row" layout-align="end center">
+
+            <a href="#/votacaonaale">
+                <md-button>Enviar</md-button>
+            </a>
+        </md-card-actions>
+    </md-card>
+        </md-tab-body>
+      </md-tab>
+        
+        <md-tab label="one">
           <md-tab-label>
       <md-icon md-svg-icon="img/deputadoicon.svg"></md-icon>
         </md-tab-label>
