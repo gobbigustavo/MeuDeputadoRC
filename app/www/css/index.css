@@ -19,6 +19,7 @@ margin-top: 10%;
 
 body {
     font-family: Lato;
+    background-image: url("img/bg.png");
 }
 
 div {
