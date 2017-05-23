@@ -18,10 +18,29 @@
     <script type="text/javascript" src="bower_components/angular-material/angular-material.min.js"></script>
     <script type="text/javascript" src="bower_components/angular-route/angular-route.min.js"></script>
 
-    <script type="text/javascript" src="bower_components/firebase/firebase.js"></script>
-    <script src="https://cdn.firebase.com/libs/angularfire/1.2.0/angularfire.min.js"></script>
+   <!-- Angular -->
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>
 
+<!-- AngularFire -->
+<script src="https://cdn.firebase.com/libs/angularfire/2.3.0/angularfire.min.js"></script>
+
+    
+<script src="https://www.gstatic.com/firebasejs/3.6.6/firebase.js"></script>
+
+    <script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyB9RXiFZa6kTQ3MS9eF5sCUU6t1CLLG0yg",
+    authDomain: "seudeputado.firebaseapp.com",
+    databaseURL: "https://seudeputado.firebaseio.com",
+    projectId: "seudeputado",
+    storageBucket: "seudeputado.appspot.com",
+    messagingSenderId: "151653197628"
+  };
+  firebase.initializeApp(config);
+</script>
     <title>Seu Deputado</title>
+
 </head>
 <body style="min-height: 0; height: auto;" ng-app="App" ng-cloak>
     <div ng-view></div>

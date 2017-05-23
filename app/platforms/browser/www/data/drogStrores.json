@@ -1,0 +1,146 @@
+{
+  "discounts": {
+    "permanente": {
+      "name": "Farmacia Permanente",
+      "what": "Paracetamol - R$ 2,00",
+      "location": "2,3km",
+      "products": {
+        "paracetamol": {
+          "nameProduct": "Paracetamol",
+          "price": "R$ 2,00"
+        }
+      }
+    },
+    "bigben": {
+      "name": "Farmacia Big Ben",
+      "what": "Fraudas GG - R$ 22,00",
+      "location": "0,3km",
+      "products": {
+        "fraudas": {
+          "nameProduct": "Fraudas GG",
+          "price": "R$ 22,00"
+        }
+      }
+    },
+    "paguemenos": {
+      "name": "Farmacia Pague Menos",
+      "what": "Dipirona Sódica - R$ 2,00",
+      "location": "6km",
+      "products": {
+        "dipirona": {
+          "nameProduct": "Dipirona Sódica",
+          "price": "R$ 2,00"
+        }
+      }
+    },
+    "trabalhador": {
+      "name": "Farmacia do Trabalhador",
+      "what": "Dramin B6 - R$ 7,00",
+      "location": "0,5km",
+      "products": {
+        "dramin": {
+          "nameProduct": "Dramin B6",
+          "price": "R$ 7,00"
+        }
+      }
+    }
+  },
+  "drugStores": {
+    "permanente": {
+      "name": "Farmacia Permanente",
+      "notes": "Bla bla bla da permanente",
+      "location": "2,3km",
+      "reviews": "4.4",
+      "products": {
+        "paracetamol": {
+          "nameProduct": "Paracetamol",
+          "price": "R$ 10,00"
+        },
+        "apracur": {
+          "nameProduct": "Apracur",
+          "price": "R$ 10,00"
+        },
+        "benegripe": {
+          "nameProduct": "Benegripe",
+          "price": "R$ 10,00"
+        },
+        "neusadina": {
+          "nameProduct": "Neusadina",
+          "price": "R$ 10,00"
+        }
+      }
+    },
+    "paguemenos": {
+      "name": "Farmacia Pague Menos",
+      "notes": "Bla bla bla da Pague Menos",
+      "location": "6km",
+      "reviews": "4.4",
+      "products": {
+        "paracetamol": {
+          "nameProduct": "Paracetamol",
+          "price": "R$ 10,00"
+        },
+        "apracur": {
+          "nameProduct": "Apracur",
+          "price": "R$ 10,00"
+        },
+        "benegripe": {
+          "nameProduct": "Benegripe",
+          "price": "R$ 10,00"
+        },
+        "neusadina": {
+          "nameProduct": "Neusadina",
+          "price": "R$ 10,00"
+        }
+      }
+    },
+    "trabalhador": {
+      "name": "Farmacia do Trabalhador",
+      "notes": "Bla bla bla da farmacia do Trabalhador",
+      "location": "0,5km",
+      "reviews": "2.1",
+      "products": {
+        "paracetamol": {
+          "nameProduct": "Paracetamol",
+          "price": "R$ 10,00"
+        },
+        "apracur": {
+          "nameProduct": "Apracur",
+          "price": "R$ 10,00"
+        },
+        "benegripe": {
+          "nameProduct": "Benegripe",
+          "price": "R$ 10,00"
+        },
+        "neusadina": {
+          "nameProduct": "Neusadina",
+          "price": "R$ 10,00"
+        }
+      }
+    },
+    "bigben": {
+      "name": "Farmacia Big Ben",
+      "notes": "Bla bla bla da Big Ben",
+      "location": "1km",
+      "reviews": "4.8",
+      "products": {
+        "paracetamol": {
+          "nameProduct": "Paracetamol",
+          "price": "R$ 10,00"
+        },
+        "apracur": {
+          "nameProduct": "Apracur",
+          "price": "R$ 10,00"
+        },
+        "benegripe": {
+          "nameProduct": "Benegripe",
+          "price": "R$ 10,00"
+        },
+        "neusadina": {
+          "nameProduct": "Neusadina",
+          "price": "R$ 10,00"
+        }
+      }
+    }
+  }
+}

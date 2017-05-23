@@ -6,7 +6,7 @@
         <param name="onload" value="true" />
     </feature>
     <allow-intent href="market:*" />
-    <name>Farma Fácil</name>
+    <name>Seu Deputado</name>
     <description>
         A sample Apache Cordova application that responds to the deviceready event.
     </description>
