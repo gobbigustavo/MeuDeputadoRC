@@ -15,22 +15,20 @@ app.initialize();
 
 angular.module('App', ['ngMaterial', 'ngRoute', 'firebase'])
 
-    .controller("SampleCtrl", function ($scope, $firebaseObject, $firebaseAuth) {
-        var auth = $firebaseAuth();
-
-        // login with Facebook
-        auth.$signInWithPopup("facebook").then(function(firebaseUser) {
-            console.log("Signed in as:", firebaseUser.uid);
-        }).catch(function(error) {
-            console.log("Authentication failed:", error);
-        });
-
+    .controller("SampleCtrl", function ($scope, $firebaseObject, $firebaseArray) {
         var ref = firebase.database().ref().child("data");
-        // download the data into a local object
+        var ref2 = firebase.database().ref().child("messages");
+
         var syncObject = $firebaseObject(ref);
-        // synchronize the object with a three-way data binding
-        // click on `index.html` above to see it used in the DOM!
         syncObject.$bindTo($scope, "data");
+
+        $scope.messages = $firebaseArray(ref2);
+
+        $scope.addMessage = function() {
+            $scope.messages.$add({
+                text: $scope.newMessageText
+            });
+        };
     })
 
     .service('sharedObj', function () {
