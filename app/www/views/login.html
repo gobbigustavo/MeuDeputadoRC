@@ -26,21 +26,8 @@
 <div style="margin-top: 35px; margin-right: 25px; margin-left: 25px;" ng-controller="SampleCtrl">
     <img height="100%" width="100%" style="display: block; margin-left: auto; margin-right: auto;" src="img/logo.png"
          alt="">
-    <h1>Data: {{ data }}</h1>
+    
 
-    <ul>
-        <li ng-repeat="message in messages">
-            <!-- edit a message -->
-            <input ng-model="message.text" ng-change="messages.$save(message)" />
-            <!-- delete a message -->
-            <button ng-click="messages.$remove(message)">Delete Message</button>
-        </li>
-    </ul>
-    <!-- push a new message onto the array -->
-    <form ng-submit="addMessage()">
-        <input ng-model="newMessageText" />
-        <button type="submit">Add Message</button>
-    </form>
 
     <form action="">
         <md-input-container style="font-size: 15px; margin-bottom: 0!important; margin-top: 55px;" class="md-block"

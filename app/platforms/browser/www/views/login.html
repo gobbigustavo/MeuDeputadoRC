@@ -1,30 +1,37 @@
 <body>
 
 <script>
-  window.fbAsyncInit = function() {
-    FB.init({
-      appId      : '300631640374242',
-      cookie     : true,
-      xfbml      : true,
-      version    : 'v2.8'
-    });
-    FB.AppEvents.logPageView();   
-  };
+    window.fbAsyncInit = function () {
+        FB.init({
+            appId: '300631640374242',
+            cookie: true,
+            xfbml: true,
+            version: 'v2.8'
+        });
+        FB.AppEvents.logPageView();
+    };
 
-  (function(d, s, id){
-     var js, fjs = d.getElementsByTagName(s)[0];
-     if (d.getElementById(id)) {return;}
-     js = d.createElement(s); js.id = id;
-     js.src = "//connect.facebook.net/en_US/sdk.js";
-     fjs.parentNode.insertBefore(js, fjs);
-   }(document, 'script', 'facebook-jssdk'));
+    (function (d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) {
+            return;
+        }
+        js = d.createElement(s);
+        js.id = id;
+        js.src = "//connect.facebook.net/en_US/sdk.js";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
 </script>
+
+<div style="margin-top: 35px; margin-right: 25px; margin-left: 25px;" ng-controller="SampleCtrl">
+    <img height="100%" width="100%" style="display: block; margin-left: auto; margin-right: auto;" src="img/logo.png"
+         alt="">
     
-    <div style="margin-top: 35px; margin-right: 25px; margin-left: 25px;" ng-controller="LoginController">
-    <img height="100%" width="100%" style="display: block; margin-left: auto; margin-right: auto;" src="img/logo.png" alt="">
+
 
     <form action="">
-        <md-input-container style="font-size: 15px; margin-bottom: 0!important; margin-top: 55px;" class="md-block" flex-gt-sm md-no-float>
+        <md-input-container style="font-size: 15px; margin-bottom: 0!important; margin-top: 55px;" class="md-block"
+                            flex-gt-sm md-no-float>
             <input id="email" ng-model="user.email" placeholder="Email" type="email">
         </md-input-container>
 
@@ -32,17 +39,22 @@
             <input id="password" ng-model="user.password" placeholder="Senha" type="password">
         </md-input-container>
 
-        <md-button style="width: 100%; height: 50px; font-size: 15px; color: #FFFFFF; background-color: #26A69A; display: block; margin-left: auto; margin-right: auto; margin-bottom: 10px;" class="md-raised" ng-click="login()">
+        <md-button
+                style="width: 100%; height: 50px; font-size: 15px; color: #FFFFFF; background-color: #26A69A; display: block; margin-left: auto; margin-right: auto; margin-bottom: 10px;"
+                class="md-raised" ng-click="login()">
             ENTRAR
         </md-button>
     </form>
 
     <div style="margin-top: 5px; margin-bottom: 28px;display: flex; align-items: center; justify-content: center;">
-        <span style="font-size: 15px;">Não possui conta ainda? <a style="color: #26A69A" href="#/register" id="new_account"><b>Crie agora</b></a></span>
+        <span style="font-size: 15px;">Não possui conta ainda? <a style="color: #26A69A" href="#/register"
+                                                                  id="new_account"><b>Crie agora</b></a></span>
     </div>
 
     <a href="#/home">
-        <md-button style="width: 100%; height: 50px; font-size: 15px; color: #FFFFFF; background-color: #2D4486; display: block; margin-left: auto; margin-right: auto; margin-bottom: 10px;" class="md-raised">
+        <md-button
+                style="width: 100%; height: 50px; font-size: 15px; color: #FFFFFF; background-color: #2D4486; display: block; margin-left: auto; margin-right: auto; margin-bottom: 10px;"
+                class="md-raised">
             <md-icon id="login" md-svg-icon="img/icons/facebook.svg" style="color: #FFFFFF"></md-icon>
             ENTRAR COM FACEBOOK
         </md-button>

@@ -15,20 +15,13 @@ app.initialize();
 
 angular.module('App', ['ngMaterial', 'ngRoute', 'firebase'])
 
-    .controller("SampleCtrl", function ($scope, $firebaseObject, $firebaseArray) {
-        var ref = firebase.database().ref().child("data");
-        var ref2 = firebase.database().ref().child("messages");
+    .controller("SampleCtrl", function ($scope, $firebaseObject) {
+        var ref = firebase.database().ref().child("votacaonaale").child("lei1").child("titulo");
 
         var syncObject = $firebaseObject(ref);
-        syncObject.$bindTo($scope, "data");
+        syncObject.$bindTo($scope, "votacaonaale");
 
-        $scope.messages = $firebaseArray(ref2);
-
-        $scope.addMessage = function() {
-            $scope.messages.$add({
-                text: $scope.newMessageText
-            });
-        };
+        
     })
 
     .service('sharedObj', function () {
