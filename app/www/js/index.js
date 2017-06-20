@@ -24,6 +24,10 @@ angular.module('App', ['ngMaterial', 'ngRoute', 'firebase'])
         
     })
 
+
+
+
+
     .service('sharedObj', function () {
         var obj = {};
 
@@ -41,7 +45,6 @@ angular.module('App', ['ngMaterial', 'ngRoute', 'firebase'])
         }
     })
 
-
     .config(['$routeProvider', function ($routeProvider) {
         $routeProvider.when('/login', {
             templateUrl: 'views/login.html',
@@ -57,7 +60,7 @@ angular.module('App', ['ngMaterial', 'ngRoute', 'firebase'])
             // }
         }).when('/register', {
             templateUrl: 'views/registration.html',
-            controller: 'SampleCtrlr'
+            controller: 'SampleCtrl'
         }).when('/home', {
             templateUrl: 'views/main.html',
             controller: 'SampleCtrl'
@@ -87,7 +90,10 @@ angular.module('App', ['ngMaterial', 'ngRoute', 'firebase'])
         }).when('/boaspraticas', {
             templateUrl: 'views/boaspraticas.html',
             controller: 'SampleCtrl'
+        }).when('/deputadonapraca', {
+            templateUrl: 'views/deputadonapraca.html',
+            controller: 'SampleCtrl'
         }).otherwise({
-            redirectTo: '/login'
+            redirectTo: '/home'
         });
     }]);
