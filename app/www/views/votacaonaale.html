@@ -12,20 +12,26 @@
         </div>
     </md-toolbar>
 
-    <div ng-repeat="lei in list2">
+    <div ng-repeat="lei in list">
         <md-card md-theme="{{ showDarkTheme ? 'dark-purple' : 'default' }}" md-theme-watch>
             <md-card-title>
                 <md-card-title-text>
-                    <h1 class="md-headline">{{ lei.titulo }}</h1>
-                    <span class="md-subhead">Pequena descrição</span>
+                    <h1 class="md-headline">Sim: {{ lei.sim }} / Não: {{ lei.nao }}</h1>
+                    <span class="md-subhead">{{ lei.descricao }}</span>
+                    <span class="md-subhead">Autoria: {{ lei.autoria }}</span>
+                    <span class="md-subhead">{{ $index }}</span>
                 </md-card-title-text>
                 <md-card-title-media>
                     <div class="md-media-sm card-media"></div>
                 </md-card-title-media>
             </md-card-title>
+
             <md-card-actions layout="row" layout-align="end center">
-                <a href="#/leinaale">
-                    <md-button>VOTAR</md-button>
+                <a ng-click="computeVotesYes($index)">
+                    <md-button>+1</md-button>
+                </a>
+                <a ng-click="computeVotesNo($index)">
+                    <md-button>-1</md-button>
                 </a>
             </md-card-actions>
         </md-card>

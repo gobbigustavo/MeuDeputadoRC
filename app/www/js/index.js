@@ -31,6 +31,18 @@ angular.module('App', ['ngMaterial', 'ngRoute', 'firebase'])
         // Option 2
         var votacaonaale2 = $firebaseObject(ref);
         votacaonaale2.$bindTo($scope, "list2");
+
+        // Compute votes yes
+        $scope.computeVotesYes = function(index) {
+            $scope.list[index].sim += 1;
+            $scope.list.$save(index);
+        };
+
+        // Compute votes no
+        $scope.computeVotesNo = function(index) {
+            $scope.list[index].nao += 1;
+            $scope.list.$save(index);
+        };
     })
 
     .service('sharedObj', function () {
