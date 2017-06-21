@@ -1,4 +1,4 @@
-<div ng-controller="CreateUserController">
+<div>
     <md-toolbar style="background-color: #26A69A;">
         <div class="md-toolbar-tools">
             <md-button class="md-icon-button" aria-label="Back">
@@ -11,82 +11,30 @@
             </h2>
         </div>
     </md-toolbar>
-    
-       <md-card md-theme="{{ showDarkTheme ? 'dark-purple' : 'default' }}" md-theme-watch>
-        <md-card-title>
-          <md-card-title-text>
-            <h1 class="md-headline">{{ votacaonaale.lei1.titulo }}</h1>
-            <span class="md-subhead">Pequena descrição</span>
-          </md-card-title-text>
-          <md-card-title-media>
-            <div class="md-media-sm card-media"></div>
-          </md-card-title-media>
-        </md-card-title>
-        <md-card-actions layout="row" layout-align="end center">
-          <a href="#/leinaale">
-            <md-button>VOTAR</md-button>
-            </a>
-        </md-card-actions>
-      </md-card>
-    
-    <md-card md-theme="{{ showDarkTheme ? 'dark-purple' : 'default' }}" md-theme-watch>
-        <md-card-title>
-          <md-card-title-text>
-            <span class="md-headline">Projeto de Lei (Número)</span>
-            <span class="md-subhead">Pequena descrição</span>
-          </md-card-title-text>
-          <md-card-title-media>
-            <div class="md-media-sm card-media"></div>
-          </md-card-title-media>
-        </md-card-title>
-        <md-card-actions layout="row" layout-align="end center">
-          <md-button>VOTAR</md-button>
-        </md-card-actions>
-      </md-card>
-    
-    <md-card md-theme="{{ showDarkTheme ? 'dark-purple' : 'default' }}" md-theme-watch>
-        <md-card-title>
-          <md-card-title-text>
-            <span class="md-headline">Projeto de Lei (Número)</span>
-            <span class="md-subhead">Pequena descrição</span>
-          </md-card-title-text>
-          <md-card-title-media>
-            <div class="md-media-sm card-media"></div>
-          </md-card-title-media>
-        </md-card-title>
-        <md-card-actions layout="row" layout-align="end center">
-          <md-button>VOTAR</md-button>
-        </md-card-actions>
-      </md-card>
-    
-    <md-card md-theme="{{ showDarkTheme ? 'dark-purple' : 'default' }}" md-theme-watch>
-        <md-card-title>
-          <md-card-title-text>
-            <span class="md-headline">Projeto de Lei (Número)</span>
-            <span class="md-subhead">Pequena descrição</span>
-          </md-card-title-text>
-          <md-card-title-media>
-            <div class="md-media-sm card-media"></div>
-          </md-card-title-media>
-        </md-card-title>
-        <md-card-actions layout="row" layout-align="end center">
-          <md-button>VOTAR</md-button>
-        </md-card-actions>
-      </md-card>
-    
-    <md-card md-theme="{{ showDarkTheme ? 'dark-purple' : 'default' }}" md-theme-watch>
-        <md-card-title>
-          <md-card-title-text>
-            <span class="md-headline">Projeto de Lei (Número)</span>
-            <span class="md-subhead">Pequena descrição</span>
-          </md-card-title-text>
-          <md-card-title-media>
-            <div class="md-media-sm card-media"></div>
-          </md-card-title-media>
-        </md-card-title>
-        <md-card-actions layout="row" layout-align="end center">
-          <md-button>VOTAR</md-button>
-        </md-card-actions>
-      </md-card>
 
+    <div ng-repeat="lei in list">
+        <md-card md-theme="{{ showDarkTheme ? 'dark-purple' : 'default' }}" md-theme-watch>
+            <md-card-title>
+                <md-card-title-text>
+                    <h1 class="md-headline">{{ lei.titulo }}</h1>
+                    <span class="md-subhead">{{ lei.descricao }}</span>
+                    <span class="md-subhead">Autoria: {{ lei.autoria }}</span>
+                </md-card-title-text>
+                <md-card-title-media>
+                    <div class="md-media-sm card-media"></div>
+                </md-card-title-media>
+            </md-card-title>
+              <span layout="row" layout-align="center">Você é a favor disso?</span>
+
+            <md-card-actions layout="row" layout-align="center">
+        
+                <a ng-click="computeVotesYes($index); showAlert($event)">
+                    <md-button>Sim</md-button>
+                </a>
+                <a ng-click="computeVotesNo($index); showAlert($event)">
+                    <md-button>Não</md-button>
+                </a>
+            </md-card-actions>
+        </md-card>
+    </div>
 </div>

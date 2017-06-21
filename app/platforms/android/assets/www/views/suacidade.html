@@ -1,0 +1,20 @@
+<div ng-controller="SampleCtrl">
+    <md-toolbar style="background-color: #26A69A;">
+        <div class="md-toolbar-tools">
+            <md-button class="md-icon-button" aria-label="Back">
+                <a href="#/home">
+                    <md-icon md-svg-icon="img/icons/arrow-left.svg" style="color: #FFFFFF"></md-icon>
+                </a>
+            </md-button>
+            <h2>
+                <span style="color: #FFFFFF;">REPORTE SEU PROBLEMA</span>
+            </h2>
+        </div>
+    </md-toolbar>
+    
+    <div style="margin-top: 10px; margin-right: 5px; margin-left: 5px;">
+         <iframe id="JotFormIFrame-71713904457661" onload="window.parent.scrollTo(0,0)" allowtransparency="true" src="https://form.jotformz.com/71713904457661" frameborder="0" style="width:100%; height:487px; border:none;" scrolling="no"> </iframe> <script type="text/javascript"> var ifr = document.getElementById("JotFormIFrame-71713904457661"); if(window.location.href && window.location.href.indexOf("?") > -1) { var get = window.location.href.substr(window.location.href.indexOf("?") + 1); if(ifr && get.length > 0) { var src = ifr.src; src = src.indexOf("?") > -1 ? src + "&" + get : src + "?" + get; ifr.src = src; } } window.handleIFrameMessage = function(e) { var args = e.data.split(":"); if (args.length > 2) { iframe = document.getElementById("JotFormIFrame-" + args[2]); } else { iframe = document.getElementById("JotFormIFrame"); } if (!iframe) return; switch (args[0]) { case "scrollIntoView": iframe.scrollIntoView(); break; case "setHeight": iframe.style.height = args[1] + "px"; break; case "collapseErrorPage": if (iframe.clientHeight > window.innerHeight) { iframe.style.height = window.innerHeight + "px"; } break; case "reloadPage": window.location.reload(); break; } var isJotForm = (e.origin.indexOf("jotform") > -1) ? true : false; if(isJotForm && "contentWindow" in iframe && "postMessage" in iframe.contentWindow) { var urls = {"docurl":encodeURIComponent(document.URL),"referrer":encodeURIComponent(document.referrer)}; iframe.contentWindow.postMessage(JSON.stringify({"type":"urls","value":urls}), "*"); } }; if (window.addEventListener) { window.addEventListener("message", handleIFrameMessage, false); } else if (window.attachEvent) { window.attachEvent("onmessage", handleIFrameMessage); } </script>
+
+    </div>
+
+</div>
