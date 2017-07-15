@@ -13,9 +13,24 @@ var app = {
 
 app.initialize();
 
-angular.module('App', ['ngMaterial', 'ngRoute', 'firebase'])
+angular.module('App', ['ngMaterial', 'ngRoute', 'firebase', 'ngCookies'])
     
-    .controller("SampleCtrl", function ($scope, $firebaseObject, $firebaseArray, $mdDialog) {
+    .controller("SampleCtrl", function ($scope, $cookies, $firebaseObject, $firebaseArray, $mdDialog) {
+        
+    
+        $scope.onTabChanges = function(currentTabIndex){
+        console.log('Current tab ' + currentTabIndex);
+        localStorage.setItem('active', currentTabIndex);
+        console.log(localStorage.getItem('active'));
+      };
+      
+      if(localStorage.getItem('active') === undefined){
+        $scope.selectedIndex = 0;
+      }
+      else{
+        $scope.selectedIndex = localStorage.getItem('active');
+      }
+    
         var ref = firebase.database().ref().child("votacaonaale");
 
         // Option 1
@@ -138,12 +153,12 @@ angular.module('App', ['ngMaterial', 'ngRoute', 'firebase'])
         }).when('/politicadeverdade', {
             templateUrl: 'views/politicadeverdade.html',
             controller: 'SampleCtrl'
-            }).when('/selecaopublica', {
+        }).when('/selecaopublica', {
             templateUrl: 'views/selecaopublica.html',
             controller: 'SampleCtrl'
         }).when('/suacidade', {
             templateUrl: 'views/suacidade.html',
-            controller: 'SampleCtrl'    
+            controller: 'SampleCtrl'   
         }).otherwise({
             redirectTo: '/home'
         });

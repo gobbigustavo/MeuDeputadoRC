@@ -10,14 +10,14 @@
     </div>
     <body style="overflow:hidden;">
     <md-content class="md-padding">
-        <md-tabs md-center-tabs="true" md-dynamic-height="" md-border-bottom="">
-            <md-tab label="six">
+        <md-tabs md-selected="selectedIndex" md-center-tabs="true" md-dynamic-height="" md-border-bottom="">
+            <md-tab label="six" md-on-select="onTabChanges(0)">
                 <md-tab-label>
                     <md-icon md-svg-icon="img/icons/vote.svg"></md-icon>
                 </md-tab-label>
            
                 <md-tab-body class="md-padding" style="background-color: #D9D7D9">
-                <md-card style="margin-top: 5%; margin-right: 15%; margin-left: 15%; margin-bottom: 40%;">
+                <md-card style="margin-top: 5%; margin-right: 5%; margin-left: 5%; margin-bottom: 5%;">
                     <img ng-src="img/ale.jpg" class="md-card-image" alt="Rodrigo">
                     <md-card-title>
                         <md-card-title-text>
@@ -36,13 +36,13 @@
 
             </md-tab>
 
-            <md-tab label="seven">
+            <md-tab label="seven" md-on-select="onTabChanges(1)">
                 <md-tab-label>
                     <md-icon md-svg-icon="img/icons/cidade.svg"></md-icon>
                 </md-tab-label>
 
                 <md-tab-body class="md-padding">
-                    <md-card style="margin-top: 5%; margin-right: 15%; margin-left: 15%; margin-bottom: 40%;">
+                    <md-card style="margin-top: 5%; margin-right: 5%; margin-left: 5%; margin-bottom: 5%;">
                         <img ng-src="img/cidade.jpg" class="md-card-image" alt="Rodrigo">
                         <md-card-title>
                             <md-card-title-text>
@@ -60,13 +60,13 @@
                 </md-tab-body>
             </md-tab>
 
-            <md-tab label="one">
+            <md-tab label="one" md-on-select="onTabChanges(2)">
                 <md-tab-label>
                     <md-icon md-svg-icon="img/deputadoicon.svg"></md-icon>
                 </md-tab-label>
 
                 <md-tab-body class="md-padding">
-                    <md-card style="margin-top: 5%; margin-right: 15%; margin-left: 15%; margin-bottom: 40%;">
+                    <md-card style="margin-top: 5%; margin-right: 5%; margin-left: 5%; margin-bottom: 5%;">
                         <img ng-src="img/rodrigobio.png" class="md-card-image" alt="Rodrigo">
                         <md-card-title>
                             <md-card-title-text>
@@ -85,13 +85,13 @@
             </md-tab>
 
 
-            <md-tab label="three" class="teste1">
+            <md-tab label="three" md-on-select="onTabChanges(3)">
                 <md-tab-label>
                     <md-icon md-svg-icon="img/boaspraticasicon.svg"></md-icon>
                 </md-tab-label>
 
                 <md-tab-body class="md-padding">
-                    <md-card style="margin-top: 5%; margin-right: 15%; margin-left: 15%; margin-bottom: 40%;">
+                    <md-card style="margin-top: 5%; margin-right: 5%; margin-left: 5%; margin-bottom: 5%;">
                         <img ng-src="img/boaspraticas.jpg" class="md-card-image" alt="Rodrigo">
                         <md-card-title>
                             <md-card-title-text>
@@ -109,13 +109,13 @@
                 </md-tab-body>
             </md-tab>
 
-            <md-tab label="four">
+            <md-tab label="four" md-on-select="onTabChanges(4)">
                 <md-tab-label>
                     <md-icon md-svg-icon="img/icons/monitoraicon.svg"></md-icon>
                 </md-tab-label>
 
                 <md-tab-body class="md-padding">
-                    <md-card style="margin-top: 5%; margin-right: 15%; margin-left: 15%; margin-bottom: 40%;">
+                    <md-card style="margin-top: 5%; margin-right: 5%; margin-left: 5%; margin-bottom: 5%;">
                         <img ng-src="img/monitora.png" class="md-card-image" alt="Rodrigo">
                         <md-card-title>
                             <md-card-title-text>
@@ -133,13 +133,13 @@
                 </md-tab-body>
             </md-tab>
 
-            <md-tab label="five">
+            <md-tab label="five" md-on-select="onTabChanges(5)">
                 <md-tab-label>
                     <md-icon md-svg-icon="img/icons/falecom.svg"></md-icon>
                 </md-tab-label>
 
                 <md-tab-body class="md-padding">
-                    <md-card style="margin-top: 5%; margin-right: 15%; margin-left: 15%; margin-bottom: 40%;">
+                    <md-card style="margin-top: 5%; margin-right: 5%; margin-left: 5%; margin-bottom: 5%;">
                         <img ng-src="img/falecom.jpg" class="md-card-image" alt="Rodrigo">
                         <md-card-title>
                             <md-card-title-text>
