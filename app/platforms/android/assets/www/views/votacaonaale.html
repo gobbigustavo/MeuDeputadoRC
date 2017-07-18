@@ -28,10 +28,10 @@
 
             <md-card-actions layout="row" layout-align="center">
         
-                <a ng-click="computeVotesYes($index); showAlert($event)">
+                <a ng-click="computeVotesYes($index); computeParcial($index); showAlert($event)">
                     <md-button>Sim</md-button>
                 </a>
-                <a ng-click="computeVotesNo($index); showAlert($event)">
+                <a ng-click="computeVotesNo($index); computeParcial($index); showAlert($event)">
                     <md-button>Não</md-button>
                 </a>
             </md-card-actions>

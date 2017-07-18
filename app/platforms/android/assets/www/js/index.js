@@ -13,9 +13,24 @@ var app = {
 
 app.initialize();
 
-angular.module('App', ['ngMaterial', 'ngRoute', 'firebase'])
+angular.module('App', ['ngMaterial', 'ngRoute', 'firebase', 'ngCookies'])
     
-    .controller("SampleCtrl", function ($scope, $firebaseObject, $firebaseArray, $mdDialog) {
+    .controller("SampleCtrl", function ($scope, $cookies, $firebaseObject, $firebaseArray, $mdDialog) {
+        
+    
+        $scope.onTabChanges = function(currentTabIndex){
+        console.log('Current tab ' + currentTabIndex);
+        localStorage.setItem('active', currentTabIndex);
+        console.log(localStorage.getItem('active'));
+      };
+      
+      if(localStorage.getItem('active') === undefined){
+        $scope.selectedIndex = 0;
+      }
+      else{
+        $scope.selectedIndex = localStorage.getItem('active');
+      }
+    
         var ref = firebase.database().ref().child("votacaonaale");
 
         // Option 1
@@ -44,21 +59,50 @@ angular.module('App', ['ngMaterial', 'ngRoute', 'firebase'])
             $scope.list.$save(index);
         };
     
-        $scope.showAlert = function(ev) {
+        // Compute parcial
+        $scope.computeParcial = function(index) {
+            $scope.list[index].parcialSim = ($scope.list[index].sim * 100) / ($scope.list[index].sim + $scope.list[index].nao);
+             $scope.list[index].parcialNao = ($scope.list[index].nao * 100) / ($scope.list[index].sim + $scope.list[index].nao);
+            $scope.list.$save(index);
+        };
+    
+        
+    $scope.showPrerenderedDialog = function(ev) {
+    $mdDialog.show({
+      contentElement: '#myDialog',
+      parent: angular.element(document.body),
+      targetEvent: ev,
+      clickOutsideToClose: true,
+        controller: 'SampleCtrl'
+    });
+  };
+    
+    $scope.showAlert = function(ev) {
             // Appending dialog to document.body to cover sidenav in docs app
             // Modal dialogs should fully cover application
             // to prevent interaction outside of dialog
-            $mdDialog.show(
-              $mdDialog.alert()
-                .parent(angular.element(document.querySelector('#popupContainer')))
-                .clickOutsideToClose(true)
-                .title('Seu voto foi computado com sucesso!')
-                .textContent('Obrigado por dar seu voto e contribuir com a democracia em Alagoas!')
-                .ariaLabel('Popup de Confirmação')
-                .ok('Ok')
-                .targetEvent(ev)
-            );
-          };
+            $mdDialog.show({
+      parent: angular.element(document.body),
+      clickOutsideToClose: true,
+      template: '<md-dialog>' +
+        '  <md-dialog-content>' +
+        '<h2 style="margin-top: 30px; margin-left: 30px; margin-right: 30px; text-align: center;">Obrigado pelo seu voto!<h2>' +
+        '<h4 style="margin-top: 5px; margin-left: 30px; margin-right: 30px; text-align: center;">Votação parcial:<h4>' +
+        '<img src="img/sim.png" alt="Sim" height="20%" width="20%" style="margin-left: 25%; margin-right: 10%;"> <img src="img/nao.png" alt="Nao" height="20%" width="20%">' +
+        '  </md-dialog-content>' +
+        '<div style="display: inline-block; width: 20%; margin-left: 29%; margin-right: 5%;">{{ lei1.autoria }}</div><div style="display: inline-block; width: 20%; margin-left: 8%; margin-right: 15%;">{{ lei1.autoria }}</div>' +
+        '</md-dialog>',
+      locals: {
+
+      },
+    controller: 'SampleCtrl'
+    });
+        function DialogController($scope, $mdDialog) {
+	    $scope.closeDialog = function() {
+	      $mdDialog.hide();
+	    };
+	  };
+};
  
     })
 
@@ -138,12 +182,12 @@ angular.module('App', ['ngMaterial', 'ngRoute', 'firebase'])
         }).when('/politicadeverdade', {
             templateUrl: 'views/politicadeverdade.html',
             controller: 'SampleCtrl'
-            }).when('/selecaopublica', {
+        }).when('/selecaopublica', {
             templateUrl: 'views/selecaopublica.html',
             controller: 'SampleCtrl'
         }).when('/suacidade', {
             templateUrl: 'views/suacidade.html',
-            controller: 'SampleCtrl'    
+            controller: 'SampleCtrl'   
         }).otherwise({
             redirectTo: '/home'
         });
