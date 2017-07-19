@@ -8,6 +8,7 @@ var app = {
     },
 
     onDeviceReady: function () {
+        StatusBar.overlaysWebView(false);
     }
 };
 
