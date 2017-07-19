@@ -189,6 +189,9 @@ angular.module('App', ['ngMaterial', 'ngRoute', 'firebase', 'ngCookies'])
         }).when('/suacidade', {
             templateUrl: 'views/suacidade.html',
             controller: 'SampleCtrl'
+        }).when('/falecomrodrigo', {
+            templateUrl: 'views/falecomrodrigo.html',
+            controller: 'SampleCtrl'
         }).otherwise({
             redirectTo: '/home'
         });
