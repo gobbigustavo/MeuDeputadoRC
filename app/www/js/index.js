@@ -60,8 +60,8 @@ angular.module('App', ['ngMaterial', 'ngRoute', 'firebase', 'ngCookies'])
 
         // Compute parcial
         $scope.computeParcial = function (index) {
-            $scope.list[index].parcialSim = ($scope.list[index].sim * 100) / ($scope.list[index].sim + $scope.list[index].nao);
-            $scope.list[index].parcialNao = ($scope.list[index].nao * 100) / ($scope.list[index].sim + $scope.list[index].nao);
+            $scope.list[index].parcialSim = (($scope.list[index].sim * 100) / ($scope.list[index].sim + $scope.list[index].nao)).toFixed(2);
+            $scope.list[index].parcialNao = (($scope.list[index].nao * 100) / ($scope.list[index].sim + $scope.list[index].nao)).toFixed(2);
             $scope.list.$save(index);
             $scope.leiSelecionada = $scope.list[index];
         };
@@ -86,10 +86,10 @@ angular.module('App', ['ngMaterial', 'ngRoute', 'firebase', 'ngCookies'])
                 template: '<md-dialog>' +
                 '  <md-dialog-content>' +
                 '<h2 style="margin-top: 30px; margin-left: 30px; margin-right: 30px; text-align: center;">Obrigado pelo seu voto!<h2>' +
-                '<h4 style="margin-top: 5px; margin-left: 30px; margin-right: 30px; text-align: center;">Votação parcial: {{ leiSelecionada.parcialSim }}%<h4>' +
+                '<h4 style="margin-top: 5px; margin-left: 30px; margin-right: 30px; text-align: center;">Votação parcial:<h4>' +
                 '<img src="img/sim.png" alt="Sim" height="20%" width="20%" style="margin-left: 25%; margin-right: 10%;"> <img src="img/nao.png" alt="Nao" height="20%" width="20%">' +
                 '  </md-dialog-content>' +
-                '<div style="display: inline-block; width: 20%; margin-left: 29%; margin-right: 5%;">{{ leiSelecionada.autoria }}</div><div style="display: inline-block; width: 20%; margin-left: 8%; margin-right: 15%;">{{ leiSelecionada.autoria }}</div>' +
+                '<div style="display: inline-block; width: 20%; margin-left: 29%; margin-right: 5%;">{{ leiSelecionada.parcialSim }}%</div><div style="display: inline-block; width: 20%; margin-left: 8%; margin-right: 15%;">{{ leiSelecionada.parcialNao }}%</div>' +
                 '</md-dialog>',
                 locals: {dataToPass: $scope.leiSelecionada},
                 controller: function ($scope, $mdDialog, dataToPass) {
