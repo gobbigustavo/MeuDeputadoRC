@@ -14,6 +14,7 @@
     <preference name="StatusBarOverlaysWebView" value="false" />
     <preference name="StatusBarBackgroundColor" value="#000" /> <!--Your color value will go here-->
     <preference name="StatusBarStyle" value="lightcontent" />
+    <preference name="orientation" value="portrait" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
