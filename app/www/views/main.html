@@ -10,10 +10,10 @@
             </div>
         </md-toolbar>
     </div>
-    <body style="overflow:hidden;">
+    <body style="overflow:hidden;" onload="start()">
     <md-content class="md-padding">
-        <md-tabs md-selected="selectedIndex" md-center-tabs="true" md-dynamic-height="" md-border-bottom="">
-            <md-tab label="six" md-on-select="onTabChanges(0)">
+        <md-tabs md-selected="selectedIndex" md-swipe-content="true" md-center-tabs="true" md-dynamic-height="" md-border-bottom="">
+            <md-tab md-swipe-left="onSwipeLeft()" label="six" md-on-select="onTabChanges(0)">
                 <md-tab-label>
                     <md-icon md-svg-icon="img/icons/vote.svg"></md-icon>
                 </md-tab-label>
@@ -43,7 +43,7 @@
 
             </md-tab>
 
-            <md-tab label="seven" md-on-select="onTabChanges(1)">
+            <md-tab md-swipe-right="onSwipeLeft()" label="seven" md-on-select="onTabChanges(1)">
                 <md-tab-label>
                     <md-icon md-svg-icon="img/icons/cidade.svg"></md-icon>
                 </md-tab-label>

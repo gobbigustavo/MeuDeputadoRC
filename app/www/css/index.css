@@ -10,6 +10,31 @@
 md-tabs.md-accent > md-tabs-wrapper > md-tabs-canvas > md-pagination-wrapper > md-tab-item:not([disabled]) {
     color: rgba(255,255,255,0.87);
 }
+.swipedemoBasicUsage .demo-swipe {
+  padding: 20px 10px; }
+
+.swipedemoBasicUsage .no-select {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none; }
+
+div.demo-swipe.demo-swipe-left, div.demo-swipe.demo-swipe-right  {
+   touch-action : pan-y;
+}
+
+div.demo-swipe.demo-swipe-up, div.demo-swipe.demo-swipe-down  {
+   touch-action : pan-x;
+}
+
+md-tabs-content-wrapper, [md-swipe-left], [md-swipe-right]  { touch-action: pan-y; }
+
+/*
+Copyright 2016 Google Inc. All Rights Reserved. 
+Use of this source code is governed by an MIT-style license that can be foundin the LICENSE file at https://material.angularjs.org/HEAD/license.
+*/
 
 .md-button.md-fab {
     background: #0289AB!important;

@@ -18,17 +18,28 @@ angular.module('App', ['ngMaterial', 'ngRoute', 'firebase', 'ngCookies'])
 
     .controller("SampleCtrl", function ($scope, $cookies, $firebaseObject, $firebaseArray, $mdDialog) {
 
+        $scope.start = function () {
+            $cookies.remove(active);
+        };
+    
+        $scope.onSwipeRight = function(ev) {
+          console.log("right");
+        };
+         $scope.onSwipeLeft = function(ev) {
+            console.log("left");
+         };
+    
         $scope.onTabChanges = function (currentTabIndex) {
             console.log('Current tab ' + currentTabIndex);
-            localStorage.setItem('active', currentTabIndex);
-            console.log(localStorage.getItem('active'));
+            sessionStorage.setItem('active', currentTabIndex);
+            console.log(sessionStorage.getItem('active'));
         };
-
-        if (localStorage.getItem('active') === undefined) {
+    
+        if (sessionStorage.getItem('active') === undefined) {
             $scope.selectedIndex = 0;
         }
         else {
-            $scope.selectedIndex = localStorage.getItem('active');
+            $scope.selectedIndex = sessionStorage.getItem('active');
         }
 
         var ref = firebase.database().ref().child("votacaonaale");
