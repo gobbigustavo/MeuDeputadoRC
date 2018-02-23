@@ -16,29 +16,126 @@ app.initialize();
 
 angular.module('App', ['ngMaterial', 'ngRoute', 'firebase', 'ngCookies'])
 
-    .controller("SampleCtrl", function ($scope, $cookies, $firebaseObject, $firebaseArray, $mdDialog) {
+    .controller("SampleCtrl", function ($scope, $window, $cookies, $http, $firebaseObject, $firebaseArray, $mdDialog) {
 
         $scope.start = function () {
             $cookies.remove(active);
         };
-    
-        $scope.onSwipeRight = function(ev) {
-          console.log("right");
+//376193ce-a168-4e13-9dac-19078e7b04d5
+//91500bbf-6a71-433d-84b8-f135c305671f
+        
+        $scope.loginFacebook = function (){
+            var provider = new firebase.auth.FacebookAuthProvider();
+            firebase.auth().signInWithPopup(provider).then(function(result) {
+              // This gives you a Facebook Access Token. You can use it to access the Facebook API.
+              var token = result.credential.accessToken;
+              // The signed-in user info.
+              var user = result.user;
+              // ...
+            }).catch(function(error) {
+              // Handle Errors here.
+              var errorCode = error.code;
+              var errorMessage = error.message;
+              // The email of the user's account used.
+              var email = error.email;
+              // The firebase.auth.AuthCredential type that was used.
+              var credential = error.credential;
+              // ...
+            });
+        }
+
+        $scope.createuser = function () {
+            var email = document.getElementById('emailregister').value;
+            var password = document.getElementById('passwordregister').value;
+          
+            firebase.auth().createUserWithEmailAndPassword(email, password)
+                .then(function(firebaseUser) {
+                    swal("Cadastrado!", "Usuário cadastrado com sucesso!", "success");
+                    setTimeout(function () {
+                        $window.location.href = '#/login';
+                    }, 2000);
+                })
+                .catch(function(error) {
+                    swal("Erro!", "A senha deve ter no mínimo 6 caracteres!", "error");
+                });
+        }
+
+        $scope.login = function () {
+            var email = $scope.email;
+            var password = $scope.password;
+          
+            firebase.auth().signInWithEmailAndPassword(email, password)
+                .then(function(firebaseUser) {
+                   $window.location.href = '#/home';
+                })
+                .catch(function(error) {
+                   var errorCode = error.code;
+                   var errorMessage = error.message;
+                   if (errorCode === 'auth/wrong-password') {
+                       alert('Wrong password.');
+                   } else {
+                       alert(errorMessage);
+                   }
+                   console.log(error);
+            });
+        }
+
+        $scope.sendEmail1 = function() {
+            Email.send("contatonossodeputado@gmail.com",
+                        "biellnnunes@gmail.com",
+                        "Reposta do formulário: Sua Cidade",
+                        "Nome: " + document.getElementById("nome").value + "<br>" +
+                        "Cidade: " + document.getElementById("cidade").value + "<br>" +
+                        "Telefone: " + document.getElementById("telefone").value + "<br>" +
+                        "Mensagem: " + document.getElementById("mensagem").value + "<br>" +
+                        "Foto: ",
+                        {token: "376193ce-a168-4e13-9dac-19078e7b04d5"});
+
+            setTimeout(function () {
+                swal("Enviado!", "O problema da sua cidade foi cadastrado com sucesso!", "success");
+            }, 1000);
+
+            setTimeout(function () {
+                $window.location.href = '#/home';
+            }, 2000);
         };
-         $scope.onSwipeLeft = function(ev) {
+
+        $scope.sendEmail2 = function() {
+
+            Email.send(
+                "contatonossodeputado@gmail.com",
+                "biellnnunes@gmail.com",
+                "Reposta do formulário: Fale com o Rodrigo",
+                "Nome: " + document.getElementById("nome").value + "<br>" +
+                "E-mail: " + document.getElementById("email").value + "<br>" +
+                "Telefone: " + document.getElementById("telefone").value + "<br>" +
+                "Mensagem: " + document.getElementById("mensagem").value,
+                {token: "376193ce-a168-4e13-9dac-19078e7b04d5"});
+
+            setTimeout(function () {
+                swal("Enviado!", "Sua mensagem para o Rodrigo foi enviada com sucesso!", "success");
+            }, 1000);
+
+            setTimeout(function () {
+                $window.location.href = '#/home';
+            }, 2000);
+        };
+        
+        $scope.onSwipeRight = function(ev) {
+            console.log("right");
+        };
+         
+        $scope.onSwipeLeft = function(ev) {
             console.log("left");
-         };
+        };
     
         $scope.onTabChanges = function (currentTabIndex) {
-            console.log('Current tab ' + currentTabIndex);
             sessionStorage.setItem('active', currentTabIndex);
-            console.log(sessionStorage.getItem('active'));
         };
     
         if (sessionStorage.getItem('active') === undefined) {
             $scope.selectedIndex = 0;
-        }
-        else {
+        } else {
             $scope.selectedIndex = sessionStorage.getItem('active');
         }
 
@@ -57,17 +154,19 @@ angular.module('App', ['ngMaterial', 'ngRoute', 'firebase', 'ngCookies'])
         // Option 2
         var votacaonaale2 = $firebaseObject(ref);
         votacaonaale2.$bindTo($scope, "list2");
-
+        $scope.isDisabled = false;
         // Compute votes yes
         $scope.computeVotesYes = function (index) {
             $scope.list[index].sim += 1;
             $scope.list.$save(index);
+            $scope.isDisabled = true;
         };
 
         // Compute votes no
         $scope.computeVotesNo = function (index) {
             $scope.list[index].nao += 1;
             $scope.list.$save(index);
+            $scope.isDisabled = true;
         };
 
         // Compute parcial
@@ -161,9 +260,10 @@ angular.module('App', ['ngMaterial', 'ngRoute', 'firebase', 'ngCookies'])
             //     // Auth refers to our $firebaseAuth wrapper in the example above
             //     "currentAuth": ["Auth", function(Auth) {
             //         // $waitForAuth returns a promise so the resolve waits for it to complete
+            //         $window.location = '/login';
             //         return Auth.$waitForAuth();
             //     }]
-            //}
+            // }
         }).when('/drugstore', {
             templateUrl: 'views/drugstore.html',
             controller: 'SampleCtrl'
@@ -204,6 +304,6 @@ angular.module('App', ['ngMaterial', 'ngRoute', 'firebase', 'ngCookies'])
             templateUrl: 'views/falecomrodrigo.html',
             controller: 'SampleCtrl'
         }).otherwise({
-            redirectTo: '/home'
+            redirectTo: '/login'
         });
     }]);

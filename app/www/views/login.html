@@ -1,9 +1,8 @@
 <body>
-
 <script>
     window.fbAsyncInit = function () {
         FB.init({
-            appId: '300631640374242',
+            appId: '775283849331533',
             cookie: true,
             xfbml: true,
             version: 'v2.8'
@@ -21,49 +20,46 @@
         js.src = "//connect.facebook.net/en_US/sdk.js";
         fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));
+    console.log("entrou")
 </script>
 
 <div style="margin-top: 35px; margin-right: 25px; margin-left: 25px;" ng-controller="SampleCtrl">
-    <img height="100%" width="100%" style="display: block; margin-left: auto; margin-right: auto;" src="img/logo.png"
-         alt="">
+    <img height="100%" width="100%" style="display: block; margin-left: auto; margin-right: auto;" src="img/logo.png" alt="">
     
-
-
     <form action="">
-        <md-input-container style="font-size: 15px; margin-bottom: 0!important; margin-top: 55px;" class="md-block"
-                            flex-gt-sm md-no-float>
-            <input id="email" ng-model="user.email" placeholder="Email" type="email">
+        <md-input-container style="font-size: 15px; margin-bottom: 0!important; margin-top: 55px;" class="md-block" flex-gt-sm md-no-float>
+            <label>E-mail</label>
+            <input id="email" ng-model="email" type="email">
         </md-input-container>
 
         <md-input-container style="font-size: 15px; margin: 0!important;" class="md-block" flex-gt-sm md-no-float>
-            <input id="password" ng-model="user.password" placeholder="Senha" type="password">
+            <label>Senha</label>
+            <input id="password" ng-model="password" type="password">
         </md-input-container>
 
-        <md-button
-                style="width: 100%; height: 50px; font-size: 15px; color: #FFFFFF; background-color: #26A69A; display: block; margin-left: auto; margin-right: auto; margin-bottom: 10px;"
-                class="md-raised" ng-click="login()">
+        <md-button style="width: 100%; height: 50px; font-size: 15px; color: #FFFFFF; background-color: #26A69A; display: block; margin-left: auto; margin-right: auto; margin-bottom: 10px;" class="md-raised" ng-click="login()">
             ENTRAR
         </md-button>
     </form>
 
-    <div style="margin-top: 5px; margin-bottom: 28px;display: flex; align-items: center; justify-content: center;">
-        <span style="font-size: 15px;">Não possui conta ainda? <a style="color: #26A69A" href="#/register"
-                                                                  id="new_account"><b>Crie agora</b></a></span>
+    <div style="margin-top: 5px; margin-bottom: 28px;display: flex; align-items: center;justify-content: center;">
+        <span style="font-size: 15px;">
+            Não possui conta ainda? 
+            <a style="color: #26A69A" href="#/register" id="new_account">
+                <b>Crie agora</b>
+            </a>
+        </span>
     </div>
     
     <div flex-gt-sm="50">
 
-    <a href="#/home">
-        <md-button
-                style="width: 100%; height: 50px; font-size: 15px; color: #FFFFFF; background-color: #2D4486; display: block; margin-left: auto; margin-right: auto; margin-bottom: 10px;"
-                class="md-raised">
-            <md-icon id="login" md-svg-icon="img/icons/facebook.svg" style="color: #FFFFFF"></md-icon>
-            ENTRAR COM FACEBOOK
-        </md-button>
-    </a>
-    <md-checkbox ng-model="data.cb1" aria-label="Termos de Uso">
-            Li e concordo com os Termos de Uso e Políticas de Privacidade
-          </md-checkbox>
+    <!-- <md-button style="width: 100%; height: 50px; font-size: 15px; color: #FFFFFF;       background-color: #2D4486; display: block; margin-left: auto; margin-right: auto; margin-bottom: 10px;" class="md-raised" ng-click="loginFacebook()">
+        <md-icon id="login" md-svg-icon="img/icons/facebook.svg" style="color: #FFFFFF"></md-icon>
+        ENTRAR COM FACEBOOK
+    </md-button>
+     -->
+    <!-- <md-checkbox ng-model="data.cb1" aria-label="Termos de Uso">
+        Li e concordo com os Termos de Uso e Políticas de Privacidade
+    </md-checkbox> -->
 </div>
-
 </body>
