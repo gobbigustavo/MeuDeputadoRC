@@ -86,24 +86,51 @@ angular.module('App', ['ngMaterial', 'ngRoute', 'firebase', 'ngCookies'])
             //}
         }
 
+    
         $scope.sendEmail1 = function() {
-            Email.send("contatonossodeputado@gmail.com",
-                        "biellnnunes@gmail.com",
-                        "Reposta do formulário: Sua Cidade",
-                        "Nome: " + document.getElementById("nome").value + "<br>" +
-                        "Cidade: " + document.getElementById("cidade").value + "<br>" +
-                        "Telefone: " + document.getElementById("telefone").value + "<br>" +
-                        "Mensagem: " + document.getElementById("mensagem").value + "<br>" +
-                        "Foto: ",
-                        {token: "376193ce-a168-4e13-9dac-19078e7b04d5"});
+            // console.log("AQUI")
+            // // var file = event.srcElement.files[0];
+            // var file = document.getElementById("foto");
+            // console.log(file);
+            // var reader = new FileReader();
+            // reader.readAsBinaryString(file);
+            
+            // reader.onload = function () {
+            //     var datauri = "data:" + file.type + ";base64," + btoa(reader.result);
+            //     console.log(datauri)
+                // Email.sendWithAttachment(“from@you.com”,
+                //     “to@them.com”,
+                //     “Subject”,
+                //     “Body”,
+                //     “smtp.server.com”,
+                //     “username”,
+                //     “password”,,
+                //     datauri,
+                //     function done(message) { alert(“Message sent OK”) }
+                //     );
 
-            setTimeout(function () {
-                swal("Enviado!", "O problema da sua cidade foi cadastrado com sucesso!", "success");
-            }, 1000);
+                Email.send("contatonossodeputado@gmail.com",
+                            "biellnnunes@gmail.com",
+                            "Reposta do formulário: Sua Cidade",
+                            "Nome: " + document.getElementById("nome").value + "<br>" +
+                            "Cidade: " + document.getElementById("cidade").value + "<br>" +
+                            "Telefone: " + document.getElementById("telefone").value + "<br>" +
+                            "Mensagem: " + document.getElementById("mensagem").value,
+                            // datauri,
+                            {token: "376193ce-a168-4e13-9dac-19078e7b04d5"});
 
-            setTimeout(function () {
-                $window.location.href = '#/home';
-            }, 2000);
+                setTimeout(function () {
+                    swal("Enviado!", "O problema da sua cidade foi cadastrado com sucesso!", "success");
+                }, 1000);
+
+                setTimeout(function () {
+                    $window.location.href = '#/home';
+                }, 2000);
+            // };
+            
+            // reader.onerror = function() {
+            //     console.log('there are some problems');
+            // };
         };
 
         $scope.sendEmail2 = function() {
