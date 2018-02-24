@@ -1,4 +1,4 @@
-<div>
+<div ng-init="init()">
     <md-toolbar style="background-color: #26A69A;">
         <div class="md-toolbar-tools">
             <md-button class="md-icon-button" aria-label="Back">
@@ -12,8 +12,8 @@
         </div>
     </md-toolbar>
 
-    <div ng-repeat="lei in list">
-        <md-card md-theme="{{ showDarkTheme ? 'dark-purple' : 'default' }}" md-theme-watch>
+    <div ng-repeat="lei in list" ng-if="hide(lei.users)" > 
+            <md-card md-theme="{{ showDarkTheme ? 'dark-purple' : 'default' }}" md-theme-watch>
             <md-card-title>
                 <md-card-title-text>
                     <h1 class="md-headline">{{ lei.titulo }}</h1>
@@ -35,6 +35,7 @@
                     <md-button ng-click="computeVotesNo($index); computeParcial($index); showAlert($event)" >Não</md-button>
                 </a>
             </md-card-actions>
-        </md-card>
+        </md-card>  
+        <!-- </div> -->
     </div>
 </div>

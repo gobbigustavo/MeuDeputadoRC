@@ -61,23 +61,29 @@ angular.module('App', ['ngMaterial', 'ngRoute', 'firebase', 'ngCookies'])
         }
 
         $scope.login = function () {
-            var email = $scope.email;
-            var password = $scope.password;
-          
-            firebase.auth().signInWithEmailAndPassword(email, password)
-                .then(function(firebaseUser) {
-                   $window.location.href = '#/home';
-                })
-                .catch(function(error) {
-                   var errorCode = error.code;
-                   var errorMessage = error.message;
-                   if (errorCode === 'auth/wrong-password') {
-                       alert('Wrong password.');
-                   } else {
-                       alert(errorMessage);
-                   }
-                   console.log(error);
-            });
+            // if (firebase.auth().currentUser) {
+            //     // [START signout]
+            //     firebase.auth().signOut();
+            //     // [END signout]
+            // } else {
+                var email = $scope.email;
+                var password = $scope.password;
+              
+                firebase.auth().signInWithEmailAndPassword(email, password)
+                    .then(function(firebaseUser) {
+                       $window.location.href = '#/home';
+                    })
+                    .catch(function(error) {
+                       var errorCode = error.code;
+                       var errorMessage = error.message;
+                       if (errorCode === 'auth/wrong-password') {
+                           alert('Wrong password.');
+                       } else {
+                           alert(errorMessage);
+                       }
+                       console.log(error);
+                });
+            //}
         }
 
         $scope.sendEmail1 = function() {
@@ -138,25 +144,62 @@ angular.module('App', ['ngMaterial', 'ngRoute', 'firebase', 'ngCookies'])
         } else {
             $scope.selectedIndex = sessionStorage.getItem('active');
         }
-
-        var ref = firebase.database().ref().child("votacaonaale");
+    
+        $scope.init = function () {
+            firebase.auth().onAuthStateChanged((user) => {
+                    if (user) {
+                        $scope.uid = user.uid;
+                    }
+                });
+            updatelist();
+        }    
 
         // Option 1
-        var votacaonaale = $firebaseArray(ref);
-        votacaonaale.$loaded()
+        function updatelist() {
+            var ref1 = firebase.database().ref().child("votacaonaale");  
+            var votacaonaale = $firebaseArray(ref1);
+            votacaonaale.$loaded()
             .then(function () {
                 $scope.list = votacaonaale;
+
+                $scope.hide = function (user){
+                    var b;
+                    if(user != null){
+                        for (var i = 0; i < Object.keys(user).length; i++) {
+                            if(Object.keys(user)[i] == $scope.uid){
+                                b = i;
+                            }
+                        }
+                    }
+                    if(b != null){
+                        var a = Object.keys(user)[b];
+                    } 
+                    return  a != $scope.uid;    
+                }               
             })
             .catch(function (error) {
                 console.log("Error:", error);
             });
-
+        } 
+    
+        var ref = firebase.database().ref().child("votacaonaale");  
+     
         // Option 2
         var votacaonaale2 = $firebaseObject(ref);
         votacaonaale2.$bindTo($scope, "list2");
-        $scope.isDisabled = false;
+        
         // Compute votes yes
         $scope.computeVotesYes = function (index) {
+            firebase.auth().onAuthStateChanged((user) => {
+              if (user) {
+                var json = user.uid;
+                var lei = parseInt(index) + 1; 
+                firebase.database().ref().child("votacaonaale").child("lei" + lei).child("users").child(user.uid).set(json);
+                
+                updatelist();
+              }
+            });
+            
             $scope.list[index].sim += 1;
             $scope.list.$save(index);
             $scope.isDisabled = true;
@@ -164,6 +207,16 @@ angular.module('App', ['ngMaterial', 'ngRoute', 'firebase', 'ngCookies'])
 
         // Compute votes no
         $scope.computeVotesNo = function (index) {
+            firebase.auth().onAuthStateChanged((user) => {
+              if (user) {
+                var json = user.uid;
+                var lei = parseInt(index) + 1; 
+                firebase.database().ref().child("votacaonaale").child("lei" + lei).child("users").child(user.uid).set(json);
+              
+                updatelist();
+              }
+            });
+            
             $scope.list[index].nao += 1;
             $scope.list.$save(index);
             $scope.isDisabled = true;
