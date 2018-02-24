@@ -110,7 +110,7 @@ angular.module('App', ['ngMaterial', 'ngRoute', 'firebase', 'ngCookies'])
                 //     );
 
                 Email.send("contatonossodeputado@gmail.com",
-                            "biellnnunes@gmail.com",
+                            "mandato@rodrigocunha.org",
                             "Reposta do formulário: Sua Cidade",
                             "Nome: " + document.getElementById("nome").value + "<br>" +
                             "Cidade: " + document.getElementById("cidade").value + "<br>" +
@@ -137,7 +137,7 @@ angular.module('App', ['ngMaterial', 'ngRoute', 'firebase', 'ngCookies'])
 
             Email.send(
                 "contatonossodeputado@gmail.com",
-                "biellnnunes@gmail.com",
+                "mandato@rodrigocunha.org",
                 "Reposta do formulário: Fale com o Rodrigo",
                 "Nome: " + document.getElementById("nome").value + "<br>" +
                 "E-mail: " + document.getElementById("email").value + "<br>" +
