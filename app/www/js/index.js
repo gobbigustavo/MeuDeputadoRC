@@ -18,9 +18,8 @@ angular.module('App', ['ngMaterial', 'ngRoute', 'firebase', 'ngCookies'])
    
     .controller("SampleCtrl", function ($scope, $window, $cookies, $http, $firebaseObject, $firebaseArray, $mdDialog) {
 
-      
+        $scope.x = true;      
         $scope.flag = false; 
-        $scope.mensagem = null;
             
         $scope.start = function () {
             $cookies.remove(active);
@@ -28,26 +27,6 @@ angular.module('App', ['ngMaterial', 'ngRoute', 'firebase', 'ngCookies'])
 //376193ce-a168-4e13-9dac-19078e7b04d5
 //91500bbf-6a71-433d-84b8-f135c305671f
         
-        $scope.loginFacebook = function (){
-            var provider = new firebase.auth.FacebookAuthProvider();
-            firebase.auth().signInWithPopup(provider).then(function(result) {
-              // This gives you a Facebook Access Token. You can use it to access the Facebook API.
-              var token = result.credential.accessToken;
-              // The signed-in user info.
-              var user = result.user;
-              // ...
-            }).catch(function(error) {
-              // Handle Errors here.
-              var errorCode = error.code;
-              var errorMessage = error.message;
-              // The email of the user's account used.
-              var email = error.email;
-              // The firebase.auth.AuthCredential type that was used.
-              var credential = error.credential;
-              // ...
-            });
-        }
-
         $scope.createuser = function () {
             var email = document.getElementById('emailregister').value;
             var password = document.getElementById('passwordregister').value;
@@ -143,6 +122,8 @@ angular.module('App', ['ngMaterial', 'ngRoute', 'firebase', 'ngCookies'])
             votacaonaale.$loaded()
             .then(function () {
                 $scope.list = votacaonaale;
+                $scope.tamanho = $scope.list.length;
+
 
                 $scope.hide = function (user){
                     var b;
@@ -156,10 +137,7 @@ angular.module('App', ['ngMaterial', 'ngRoute', 'firebase', 'ngCookies'])
                     if(b != null){
                         var a = Object.keys(user)[b];
                     } 
-                    if($scope.flag == false){
-                        $scope.flag = true; 
-                        $scope.show = true;
-                    } 
+                    
                     return  a != $scope.uid;    
                 }               
             })
