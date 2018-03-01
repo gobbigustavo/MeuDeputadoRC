@@ -115,6 +115,8 @@ angular.module('App', ['ngMaterial', 'ngRoute', 'firebase', 'ngCookies'])
             updatelist();
         }    
 
+        $scope.flag = true;
+
         // Option 1
         function updatelist() {
             var ref1 = firebase.database().ref().child("votacaonaale");  
@@ -122,8 +124,7 @@ angular.module('App', ['ngMaterial', 'ngRoute', 'firebase', 'ngCookies'])
             votacaonaale.$loaded()
             .then(function () {
                 $scope.list = votacaonaale;
-                $scope.tamanho = $scope.list.length;
-
+                $scope.tamanho = $scope.list.length+1;
 
                 $scope.hide = function (user){
                     var b;
@@ -137,7 +138,12 @@ angular.module('App', ['ngMaterial', 'ngRoute', 'firebase', 'ngCookies'])
                     if(b != null){
                         var a = Object.keys(user)[b];
                     } 
-                    
+                    if(a == $scope.uid){
+                        $scope.tamanho--;
+                    }
+                    if($scope.tamanho <= 0){
+                        $scope.flag = false;
+                    }   
                     return  a != $scope.uid;    
                 }               
             })
