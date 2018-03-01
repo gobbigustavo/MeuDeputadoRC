@@ -39,5 +39,15 @@
         },
         "is_top_level": true,
         "variables": {}
+    },
+    "cordova-plugin-ios-permissions": {
+        "source": {
+            "type": "git",
+            "url": "https://github.com/MBuchalik/cordova-plugin-ios-permissions.git",
+            "subdir": ".",
+            "ref": "v1.1.1"
+        },
+        "is_top_level": true,
+        "variables": {}
     }
 }

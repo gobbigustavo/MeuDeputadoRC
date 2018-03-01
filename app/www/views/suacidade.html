@@ -44,24 +44,83 @@
         </md-input-container>
   
         <md-input-container md-no-float class="md-block">      
-            <label>Envie uma Foto ou Vídeo</label>
+            <label>Envie uma Foto</label>
         </md-input-container>
         <br>
+        <script src="https://smtpjs.com/v2/smtp.js"></script>
+        <script type="text/javascript">
+
+          var file = null;
+          
+          function load (evt) {
+            console.log("entrou em load")
+            console.log(evt)
+            file = evt;
+          }
+
+          function send(){
+            var tgt = file.target || window.event.srcElement,
+                files = tgt.files;
+
+            if (FileReader && files && files.length) {
+                var fr = new FileReader();
+                fr.onload = function () {
+                    document.getElementById(outImage).src = fr.result;
+                }
+                fr.readAsBinaryString(files[0]);
+                console.log(fr)
+            }
+
+            fr.onload = function () {
+              var ref = firebase.storage().ref().child(document.getElementById("nome").value+".jpg");
+              ref.putString(btoa(fr.result), 'base64').then(function(snapshot) {
+                console.log('Uploaded a base64url string!');
+              });
+
+              Email.send(
+                "contatonossodeputado@gmail.com",
+                "biellnnunes@gmail.com",
+                "Reposta do formulário: Sua Cidade",
+                "Nome: " + document.getElementById("nome").value + "<br>" +
+                "Cidade: " + document.getElementById("cidade").value + "<br>" +
+                "Telefone: " + document.getElementById("telefone").value + "<br>" +
+                "Mensagem: " + document.getElementById("mensagem").value,
+                {token: "376193ce-a168-4e13-9dac-19078e7b04d5"});
+            };
+            fr.onerror = function() {
+                console.log("there are some problems");
+            };
+            setTimeout(function () {
+                swal("Enviado!", "O problema da sua cidade foi cadastrado com sucesso!", "success");
+            }, 1000);
+
+            setTimeout(function () {
+                window.location.href = '#/home';
+            }, 2000);
+          }
+
+        </script>
       
         <div class="rows">
-            <input class="ng-hide" id="input-file-id" multiple type="file" id="foto" />
-            <label for="input-file-id" class="md-button md-raised md-primary" style="background-color: #26A69A;">Selecionar Arquivos</label>
-                  
-            <md-input-container md-no-float class="md-block">      
-                <md-button 
-                    type="submit" 
-                    ng-click="sendEmail1()" 
-                    style="
-                        background-color: #26A69A; 
-                        color: white">
-                    Enviar
-                </md-button>
-            </md-input-container>
+          <script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+          <script type="text/javascript" src="js/a.js"></script>
+  
+          <input type="button" class="ax" value="Selecionar">
+        
+          <input type="file" name="arquivo" id="arquivo" onchange="load(event)" class="arquivo">
+        
+          <input type="text" name="file" id="file" class="file" placeholder="Nenhuma foto selecionada" readonly="readonly">
+        
+          <md-input-container md-no-float class="md-block">      
+              <md-button 
+                  type="submit" 
+                  onclick="send()" 
+                  style="
+                      background-color: #26A69A; 
+                      color: white">
+                  Enviar
+              </md-button>
+          </md-input-container>
         </div>        
       </md-content>
     </div>

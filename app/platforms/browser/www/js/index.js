@@ -15,9 +15,13 @@ var app = {
 app.initialize();
 
 angular.module('App', ['ngMaterial', 'ngRoute', 'firebase', 'ngCookies'])
-
+   
     .controller("SampleCtrl", function ($scope, $window, $cookies, $http, $firebaseObject, $firebaseArray, $mdDialog) {
 
+      
+        $scope.flag = false; 
+        $scope.mensagem = null;
+            
         $scope.start = function () {
             $cookies.remove(active);
         };
@@ -61,11 +65,9 @@ angular.module('App', ['ngMaterial', 'ngRoute', 'firebase', 'ngCookies'])
         }
 
         $scope.login = function () {
-            // if (firebase.auth().currentUser) {
-            //     // [START signout]
-            //     firebase.auth().signOut();
-            //     // [END signout]
-            // } else {
+            if (firebase.auth().currentUser) {
+                $window.location.href = '#/home';
+            } else {
                 var email = $scope.email;
                 var password = $scope.password;
               
@@ -83,55 +85,8 @@ angular.module('App', ['ngMaterial', 'ngRoute', 'firebase', 'ngCookies'])
                        }
                        console.log(error);
                 });
-            //}
+            }
         }
-
-    
-        $scope.sendEmail1 = function() {
-            // console.log("AQUI")
-            // // var file = event.srcElement.files[0];
-            // var file = document.getElementById("foto");
-            // console.log(file);
-            // var reader = new FileReader();
-            // reader.readAsBinaryString(file);
-            
-            // reader.onload = function () {
-            //     var datauri = "data:" + file.type + ";base64," + btoa(reader.result);
-            //     console.log(datauri)
-                // Email.sendWithAttachment(“from@you.com”,
-                //     “to@them.com”,
-                //     “Subject”,
-                //     “Body”,
-                //     “smtp.server.com”,
-                //     “username”,
-                //     “password”,,
-                //     datauri,
-                //     function done(message) { alert(“Message sent OK”) }
-                //     );
-
-                Email.send("contatonossodeputado@gmail.com",
-                            "mandato@rodrigocunha.org",
-                            "Reposta do formulário: Sua Cidade",
-                            "Nome: " + document.getElementById("nome").value + "<br>" +
-                            "Cidade: " + document.getElementById("cidade").value + "<br>" +
-                            "Telefone: " + document.getElementById("telefone").value + "<br>" +
-                            "Mensagem: " + document.getElementById("mensagem").value,
-                            // datauri,
-                            {token: "376193ce-a168-4e13-9dac-19078e7b04d5"});
-
-                setTimeout(function () {
-                    swal("Enviado!", "O problema da sua cidade foi cadastrado com sucesso!", "success");
-                }, 1000);
-
-                setTimeout(function () {
-                    $window.location.href = '#/home';
-                }, 2000);
-            // };
-            
-            // reader.onerror = function() {
-            //     console.log('there are some problems');
-            // };
-        };
 
         $scope.sendEmail2 = function() {
 
@@ -200,6 +155,10 @@ angular.module('App', ['ngMaterial', 'ngRoute', 'firebase', 'ngCookies'])
                     }
                     if(b != null){
                         var a = Object.keys(user)[b];
+                    } 
+                    if($scope.flag == false){
+                        $scope.flag = true; 
+                        $scope.show = true;
                     } 
                     return  a != $scope.uid;    
                 }               

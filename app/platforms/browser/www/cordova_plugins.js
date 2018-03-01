@@ -59,7 +59,8 @@ module.exports.metadata =
     "cordova-plugin-whitelist": "1.2.2",
     "cordova-plugin-statusbar": "2.2.3",
     "cordova-plugin-screen-orientation": "2.0.1",
-    "cordova-plugin-device-orientation": "1.0.7"
+    "cordova-plugin-device-orientation": "1.0.7",
+    "cordova-plugin-ios-permissions": "1.1.1"
 }
 // BOTTOM OF METADATA
 });

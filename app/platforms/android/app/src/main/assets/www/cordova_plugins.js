@@ -54,7 +54,8 @@ module.exports.metadata =
   "es6-promise-plugin": "4.1.0",
   "cordova-plugin-screen-orientation": "2.0.1",
   "cordova-plugin-statusbar": "2.2.3",
-  "cordova-plugin-whitelist": "1.2.2"
+  "cordova-plugin-whitelist": "1.2.2",
+  "cordova-plugin-ios-permissions": "1.1.1"
 };
 // BOTTOM OF METADATA
 });

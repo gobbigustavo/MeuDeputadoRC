@@ -18,6 +18,9 @@
         },
         "cordova-plugin-device-orientation": {
             "PACKAGE_NAME": "io.cordova.nossodeputado"
+        },
+        "cordova-plugin-ios-permissions": {
+            "PACKAGE_NAME": "io.cordova.nossodeputado"
         }
     },
     "dependent_plugins": {}
