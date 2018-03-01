@@ -11,6 +11,31 @@
   display: none;
 }
 .file {
+  line-height: 30px;
+  height: 30px;
+  border: 1px solid #A7A7A7;
+  padding: 5px;
+  box-sizing: border-box;
+  font-size: 15px;
+  vertical-align: middle;
+  width: 200px;
+}
+.btn {
+  margin-left: 10px;
+  border: none;
+  box-sizing: border-box;
+  padding: 2px 10px;
+  background-color: #26A69A;
+  color: #FFF;
+  height: 32px;
+  font-size: 15px;
+  vertical-align: middle;
+}
+
+/*.arquivo {
+  display: none;
+}
+.file {
   margin-left: 10px;
   line-height: 30px;
   height: 30px;
@@ -31,7 +56,7 @@
   height: 32px;
   font-size: 15px;
   vertical-align: middle;
-}
+}*/
 
 md-tabs.md-accent > md-tabs-wrapper > md-tabs-canvas > md-pagination-wrapper > md-tab-item:not([disabled]) {
     color: rgba(255,255,255,0.87);

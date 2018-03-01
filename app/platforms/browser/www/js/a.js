@@ -1,3 +1,4 @@
+console.log("entrou aqui")
 $('.ax').on('click', function() {
 	$('.arquivo').trigger('click');
 });

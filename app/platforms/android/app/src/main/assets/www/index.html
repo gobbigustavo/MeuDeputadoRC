@@ -23,8 +23,7 @@
     <!-- Angular -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular-cookies.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-
+   
     <!-- smtpjs -->
     <script src="https://smtpjs.com/v2/smtp.js"></script>
     
@@ -56,7 +55,88 @@
 <body style="min-height: 0; height: auto;" ng-app="App" ng-cloak>
 <div ng-view></div>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script type="text/javascript" src="js/index.js"></script>
-<script type="text/javascript" src="js/a.js"></script>
+<!-- <script type="text/javascript" src="js/a.js"></script> -->
+<script src="https://smtpjs.com/v2/smtp.js"></script>
+<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+        <script type="text/javascript">
+       console.log("entrou nessa merda")
+         
+         function a(){
+            $('.arquivo').trigger('click');    
+         }
+            
+            // $('.arquivo').on('change', function() {
+            //     console.log("2")
+            //   var fileName = $(this)[0].files[0].name;
+            //   $('#file').val(fileName);
+            // });
+        
+          var file = null;
+          
+          function load (evt) {
+            console.log("entrou em load")
+            console.log(evt)
+
+            // var fileName = $(this)[0].files[0].name;
+            var fileName = document.getElementById("arquivo").value.split(/(\\|\/)/g).pop();
+              $('#file').val(fileName);
+           
+            // var fileName2 = evt.srcelement.value;
+            // console.log(fileName2)
+            
+            // var fileName1 = $(evt)[0].files[0].name;
+
+            // $('#file').val(fileName);
+            file = evt;
+          }
+
+          function send(){
+            var tgt = file.target || window.event.srcElement,
+                files = tgt.files;
+
+            if (FileReader && files && files.length) {
+                var fr = new FileReader();
+                fr.onload = function () {
+                    document.getElementById(outImage).src = fr.result;
+                }
+                fr.readAsBinaryString(files[0]);
+                console.log(fr)
+            }
+
+            fr.onload = function () {
+              var ref = firebase.storage().ref().child(document.getElementById("nome").value+".jpg");
+              ref.putString(btoa(fr.result), 'base64').then(function(snapshot) {
+                console.log('Uploaded a base64url string!');
+              });
+
+              Email.send(
+                "contatonossodeputado@gmail.com",
+                "biellnnunes@gmail.com",
+                "Reposta do formulário: Sua Cidade",
+                "Nome: " + document.getElementById("nome").value + "<br>" +
+                "Cidade: " + document.getElementById("cidade").value + "<br>" +
+                "Telefone: " + document.getElementById("telefone").value + "<br>" +
+                "Mensagem: " + document.getElementById("mensagem").value,
+                {token: "376193ce-a168-4e13-9dac-19078e7b04d5"});
+            };
+            fr.onerror = function() {
+                console.log("there are some problems");
+            };
+            setTimeout(function () {
+                swal("Enviado!", "O problema da sua cidade foi cadastrado com sucesso!", "success");
+            }, 1000);
+
+            setTimeout(function () {
+                window.location.href = '#/home';
+            }, 2000);
+          }
+
+        </script>
+      
 </body>
 </html>
