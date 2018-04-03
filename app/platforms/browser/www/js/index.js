@@ -18,6 +18,17 @@ angular.module('App', ['ngMaterial', 'ngRoute', 'firebase', 'ngCookies'])
    
     .controller("SampleCtrl", function ($scope, $window, $cookies, $http, $firebaseObject, $firebaseArray, $mdDialog) {
 
+        $scope.$on('$routeChangeSuccess', function () {
+            var url = window.location.href
+            var login = url.split("/").pop()
+
+            if (localStorage.getItem("currentUser") != null && login == "login") {
+                $window.location.href = '#/home';
+                console.log(firebase.auth().currentUser)
+                console.log("entrou no if")
+            }
+        });
+
         $scope.x = true;      
         $scope.flag = false; 
             
@@ -44,7 +55,7 @@ angular.module('App', ['ngMaterial', 'ngRoute', 'firebase', 'ngCookies'])
         }
 
         $scope.login = function () {
-            if (firebase.auth().currentUser) {
+            if (localStorage.getItem("currentUser") != null) {
                 $window.location.href = '#/home';
             } else {
                 var email = $scope.email;
@@ -53,6 +64,8 @@ angular.module('App', ['ngMaterial', 'ngRoute', 'firebase', 'ngCookies'])
                 firebase.auth().signInWithEmailAndPassword(email, password)
                     .then(function(firebaseUser) {
                        $window.location.href = '#/home';
+                       localStorage.setItem("currentUser", firebase.auth().currentUser);
+                       console.log(firebase.auth().currentUser);
                     })
                     .catch(function(error) {
                        var errorCode = error.code;
@@ -258,6 +271,8 @@ angular.module('App', ['ngMaterial', 'ngRoute', 'firebase', 'ngCookies'])
             getObj: getObj
         }
     })
+
+
 
     .config(['$routeProvider', function ($routeProvider) {
         $routeProvider.when('/login', {
